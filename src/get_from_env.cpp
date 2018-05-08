@@ -29,6 +29,7 @@ void test_getenv()
 			printf("  3 is set.\n");
 			break;
 		default:
+			printf("  others.\n");
 			break;
 		}
 	}
