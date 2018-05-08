@@ -68,6 +68,7 @@ void test_file2()
 				printf("  3 is set.\n");
 				break;
 			default:
+				printf("  others.\n");
 				break;
 			}
 		}
