@@ -9,6 +9,23 @@
 // export TESTVAL2=1,2,5,10,-3
 
 
+//すべての環境変数の取得
+void test_getAllEnv()
+{
+	printf("********** %s **********\n", __FUNCTION__);
+	
+	extern char **environ;
+	char **env = environ;
+	
+	while(*env) {
+		const char* val = *env;
+		if (val) {
+		    printf("%s\n", val);
+		}
+		env++;
+	}
+}
+
 //環境変数からの取得
 void test_getenv()
 {
@@ -57,6 +74,7 @@ void test_getenv2()
 
 void Sample_get_from_env()
 {
+	test_getAllEnv();
 	test_getenv();
 	test_getenv2();
 }
