@@ -1,5 +1,7 @@
 #include "main.h"
 #include <stdio.h>
+#include <stdlib.h>
+#include <stdint.h>
 
 /* global variables */
 GLOBALPROP g_gprop = {0};
@@ -64,10 +66,39 @@ int main( int argc, char **argv )
 		return -1;
 	}
 	
-	Sample_get_from_env();
-	Sample_get_from_file();
-	Sample_IDString();
+	char buffer[256] = {0};
+	uint32_t selectNum = 0;
 	
+	while (1) {
+		printf("==============================\n");
+		printf("  1: Sample_get_from_env\n");
+		printf("  2: Sample_get_from_file\n");
+		printf("  3: Sample_IDString\n");
+		printf("  q: quit\n");
+		printf("==============================\n");
+		printf(">>");
+		fgets(buffer, sizeof(buffer), stdin);
+		
+		if ( buffer[0] == 'q' || buffer[0] == 'Q' ) {
+			break;
+		}
+		
+		selectNum = strtoul(buffer, NULL, 0);
+		switch ( selectNum ) {
+		case 1:
+			Sample_get_from_env();
+			break;
+		case 2:
+			Sample_get_from_file();
+			break;
+		case 3:
+			Sample_IDString();
+			break;
+		default:
+			printf("[ERROR] invalid number(%u)\n", selectNum);
+			break;
+		}
+	}
 	return 0;
 }
 

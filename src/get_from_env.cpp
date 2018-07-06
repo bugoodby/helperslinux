@@ -3,10 +3,12 @@
 #include <stdlib.h>
 #include <stdint.h>
 #include <string.h>
+#include <unistd.h> // for sleep()
 
 // ex)
 // export TESTVAL=3
-// export TESTVAL2=1,2,5,10,-3
+// export TESTVAL_LIST=1,2,5,10,-3
+// export TESTVAL_SLEEPTIME=5
 
 
 //すべての環境変数の取得
@@ -53,12 +55,12 @@ void test_getenv()
 }
 
 //環境変数からの取得（,区切りのリスト）
-void test_getenv2()
+void test_getenv_list()
 {
 	printf("********** %s **********\n", __FUNCTION__);
 	
-	char *str = getenv("TESTVAL2");
-	printf("TESTVAL2 = %s\n", str);
+	char *str = getenv("TESTVAL_LIST");
+	printf("TESTVAL_LIST = %s\n", str);
 	if ( str ) {
 		char *token = NULL, *saveptr = NULL;
 		token = strtok_r(str, ",", &saveptr);
@@ -70,6 +72,21 @@ void test_getenv2()
 	}
 }
 
+//環境変数から数値を取得してスリープ
+void test_getenv_sleep()
+{
+	printf("********** %s **********\n", __FUNCTION__);
+	
+	char *str = getenv("TESTVAL_SLEEPTIME");
+	printf("TESTVAL_SLEEPTIME = %s\n", str);
+	if ( str ) {
+		uint32_t sec = strtoul(str, NULL, 0);
+		printf("--- sleep(%u) start ---\n", sec);
+		sleep(sec);
+		printf("--- sleep(%u) end ---\n", sec);
+	}
+}
+
 
 
 
@@ -77,6 +94,7 @@ void Sample_get_from_env()
 {
 	test_getAllEnv();
 	test_getenv();
-	test_getenv2();
+	test_getenv_list();
+	test_getenv_sleep();
 }
 
