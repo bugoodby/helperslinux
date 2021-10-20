@@ -59,7 +59,6 @@ bool parse_cmdline( int argc, char **argv, GLOBALPROP &gprop )
 	return ret;
 }
 
-
 int main( int argc, char **argv )
 {
 	if ( !parse_cmdline(argc, argv, g_gprop) ) {
@@ -71,13 +70,17 @@ int main( int argc, char **argv )
 	
 	while (1) {
 		printf("==============================\n");
-		printf("  1: Sample_get_from_env\n");
-		printf("  2: Sample_get_from_file\n");
-		printf("  3: Sample_IDString\n");
+		printf("  1: check_env\n");
+		printf("  2: Sample_get_from_env\n");
+		printf("  3: Sample_get_from_file\n");
+		printf("  4: Sample_IDString\n");
+		printf("  5: dumpbin\n");
 		printf("  q: quit\n");
 		printf("==============================\n");
 		printf(">>");
-		fgets(buffer, sizeof(buffer), stdin);
+		if ( !fgets(buffer, sizeof(buffer), stdin) ) {
+			buffer[0] = '\0';
+		}
 		
 		if ( buffer[0] == 'q' || buffer[0] == 'Q' ) {
 			break;
@@ -85,15 +88,12 @@ int main( int argc, char **argv )
 		
 		selectNum = strtoul(buffer, NULL, 0);
 		switch ( selectNum ) {
-		case 1:
-			Sample_get_from_env();
-			break;
-		case 2:
-			Sample_get_from_file();
-			break;
-		case 3:
-			Sample_IDString();
-			break;
+		case 1: check_env(); break;
+		case 2: Sample_get_from_env(); break;
+		case 3: Sample_get_from_file(); break;
+		case 4: Sample_IDString(); break;
+		case 5: dumpbin("./makefile"); break;
+		case 6: logging_test_main(); break;
 		default:
 			printf("[ERROR] invalid number(%u)\n", selectNum);
 			break;

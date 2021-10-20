@@ -20,7 +20,9 @@ void test_file()
 	if ( !fp ) {
 		fprintf(stderr, "conf not found.\n");
 	} else {
-		fgets(line, sizeof(line), fp);
+		if ( !fgets(line, sizeof(line), fp) ) {
+			line[0] = '\0';
+		}
 		fclose(fp);
 		printf("LINE = %s\n", line);
 		int32_t num = strtol(line, NULL, 0);

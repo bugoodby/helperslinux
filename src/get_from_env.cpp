@@ -14,7 +14,7 @@
 //すべての環境変数の取得
 void test_getAllEnv()
 {
-	printf("********** %s **********\n", __FUNCTION__);
+	printf("\n********** %s **********\n", __FUNCTION__);
 	
 	extern char **environ;
 	char **env = environ;
@@ -31,7 +31,7 @@ void test_getAllEnv()
 //環境変数からの取得
 void test_getenv()
 {
-	printf("********** %s **********\n", __FUNCTION__);
+	printf("\n********** %s **********\n", __FUNCTION__);
 	
 	char *str = getenv("TESTVAL");
 	printf("TESTVAL = %s\n", str);
@@ -57,7 +57,7 @@ void test_getenv()
 //環境変数からの取得（,区切りのリスト）
 void test_getenv_list()
 {
-	printf("********** %s **********\n", __FUNCTION__);
+	printf("\n********** %s **********\n", __FUNCTION__);
 	
 	char *str = getenv("TESTVAL_LIST");
 	printf("TESTVAL_LIST = %s\n", str);
@@ -75,7 +75,7 @@ void test_getenv_list()
 //環境変数から数値を取得してスリープ
 void test_getenv_sleep()
 {
-	printf("********** %s **********\n", __FUNCTION__);
+	printf("\n********** %s **********\n", __FUNCTION__);
 	
 	char *str = getenv("TESTVAL_SLEEPTIME");
 	printf("TESTVAL_SLEEPTIME = %s\n", str);

@@ -24,9 +24,13 @@ extern GLOBALPROP g_gprop;
 inline GLOBALPROP* prop() { return &g_gprop; }
 
 
+
+void check_env();
 void Sample_get_from_env();
 void Sample_get_from_file();
 void Sample_IDString();
+void dumpbin( const char *fname );
+void logging_test_main();
 
 
 #endif /* __MAIN_H__ */
