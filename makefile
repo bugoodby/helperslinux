@@ -2,7 +2,7 @@ CC=g++
 WARNS=-Wall -Werror
 COPTS=-O2
 CDEFS=
-CFLAGS=-m32 -c
+CFLAGS=-m32 -fno-exceptions -c
 LDFLAGS=-m32
 
 TARGET=helpers
