@@ -1,6 +1,5 @@
 CC=g++
-#WARNS=-Wall -Werror
-WARNS=-Wall 
+WARNS=-Wall -Werror
 COPTS=-O2
 CDEFS=
 CFLAGS=-m32 -c
