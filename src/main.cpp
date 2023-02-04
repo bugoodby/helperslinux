@@ -59,8 +59,24 @@ bool parse_cmdline( int argc, char **argv, GLOBALPROP &gprop )
 	return ret;
 }
 
+typedef struct {
+	unsigned short a;
+	unsigned short b[100];
+} FA_SRVC_MSG;
+
+void test()
+{
+	FA_SRVC_MSG msg = {};
+	printf("msg.b[0] = %p\n", &(msg.b[0]));
+	uint8_t *p = (uint8_t*)(&(msg.b[0]) - 1);
+	printf("p        = %p\n", p);
+}
+
+
 int main( int argc, char **argv )
 {
+	test();
+
 	if ( !parse_cmdline(argc, argv, g_gprop) ) {
 		return -1;
 	}
@@ -75,6 +91,7 @@ int main( int argc, char **argv )
 		printf("  3: Sample_get_from_file\n");
 		printf("  4: Sample_IDString\n");
 		printf("  5: dumpbin\n");
+		printf("  6: logging_test_main\n");
 		printf("  q: quit\n");
 		printf("==============================\n");
 		printf(">>");

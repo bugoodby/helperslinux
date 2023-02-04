@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <string.h>
 #include <unistd.h>
 
 
@@ -10,16 +11,16 @@ struct data_list_t {
 	uint32_t val[256];
 };
 
-void logging_test_main()
+void logging_data_list()
 {
-	// ‘ÎÛƒf[ƒ^¶¬
+	// å¯¾è±¡ãƒ‡ãƒ¼ã‚¿ç”Ÿæˆ
 	data_list_t dataList;
 	dataList.count = 100;
 	for ( uint8_t i = 0; i < dataList.count; i++ ) {
 		dataList.val[i] = i;
 	}
 	
-	// ƒƒOo—Í
+	// ãƒ­ã‚°å‡ºåŠ›
 	char logBuffer[100] = "";
 	char *pWritePoint = logBuffer;
 	size_t remineSize = sizeof(logBuffer);
@@ -34,3 +35,34 @@ void logging_test_main()
 	printf("Data List: cnt(%u) val(%s)\n", dataList.count, logBuffer);
 }
 
+void logging_arg_list()
+{
+	// å¯¾è±¡ãƒ‡ãƒ¼ã‚¿ç”Ÿæˆ
+	int argc = 5;
+	const char *argv[] = { "12345678", "1234567", "0123", "-o", "/tmp/hogehoge.txt" };
+	
+	// ãƒ­ã‚°å‡ºåŠ›
+	char buffer[20] = "";
+	char tmp[30] = "";
+	size_t tmplen = 0;
+	size_t remain = sizeof(buffer) - 1;
+	
+	for ( int i = 0; i < argc; i++ ) {
+		snprintf(tmp, sizeof(tmp), "[%s]", argv[i]);
+		tmplen = strlen(tmp);
+		strncat(buffer, tmp, remain);
+		if ( remain < tmplen ) {
+			break;
+		}
+		remain -= strlen(tmp);
+	}
+	
+	printf("Args: %s  (len=%u)\n", buffer, strlen(buffer));
+}
+
+
+void logging_test_main()
+{
+	logging_data_list();
+	logging_arg_list();
+}

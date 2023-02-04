@@ -8,10 +8,10 @@
 
 void check_env()
 {
-	printf("sizeof(bool) : %lu\n", sizeof(bool));
-	printf("sizeof(int) : %lu\n", sizeof(int));
-	printf("sizeof(long) : %lu\n", sizeof(long));
-	printf("sizeof(long long) : %lu\n", sizeof(long long));
-	printf("sizeof(float) : %lu\n", sizeof(float));
-	printf("sizeof(double) : %lu\n", sizeof(double));
+	printf("sizeof(bool) : %u\n", sizeof(bool));
+	printf("sizeof(int) : %u\n", sizeof(int));
+	printf("sizeof(long) : %u\n", sizeof(long));
+	printf("sizeof(long long) : %u\n", sizeof(long long));
+	printf("sizeof(float) : %u\n", sizeof(float));
+	printf("sizeof(double) : %u\n", sizeof(double));
 }

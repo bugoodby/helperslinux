@@ -1,8 +1,10 @@
 CC=g++
-WARNS=-Wall -Werror
+#WARNS=-Wall -Werror
+WARNS=-Wall 
 COPTS=-O2
 CDEFS=
-CFLAGS=-c
+CFLAGS=-m32 -c
+LDFLAGS=-m32
 
 TARGET=helpers
 
